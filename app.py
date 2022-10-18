@@ -33,6 +33,17 @@ def new_todos():
         mimetype='application/json'
     )
     return response
+
+@app.route('/todos', methods=['GET'])
+def get_todos():
+    global todos_list
+    response: Response = Response(
+        json.dumps(todos_list, default=vars),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
    
 if __name__ == '__main__':
     app.run()

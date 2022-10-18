@@ -1,3 +1,4 @@
+from glob import glob
 from flask import Flask, request, Response
 from typing import List, Dict
 from utils import parse_todo_request, save_todo, get_todo_by_id, update_a_todo
@@ -82,6 +83,28 @@ def update_todo(todo_id):
             mimetype='application/json'
         )
         return response
+
+@app.route('/todos/<todo_id>', methods=['DELETE'])
+def delete_todo(todo_id):
+    global todos_list
+    global total_todos
+    todo = get_todo_by_id(todo_id, todos_list)
+    if todo:
+        todos_list.remove(todo)
+        response: Response = Response(
+            "Todo deleted",
+            status=200,
+            mimetype='application/json'
+        )
+        return response
+    else:
+        response: Response = Response(
+            "Todo not found",
+            status=404,
+            mimetype='application/json'
+        )
+        return response
+
         
 
 

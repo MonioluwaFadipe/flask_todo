@@ -14,3 +14,6 @@ def parse_todo_request(request: Dict) -> Dict:
     }
 
     return cleaned_request
+
+def save_todo(todo: Dict, todo_list: List) -> NoReturn:
+    todo_list.append(todo)

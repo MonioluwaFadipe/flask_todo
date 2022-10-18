@@ -17,3 +17,10 @@ def parse_todo_request(request: Dict) -> Dict:
 
 def save_todo(todo: Dict, todos_list: List):
     todos_list.append(todo)
+
+def get_todo_by_id(todo_id: str, todos_list: List) -> Dict:
+    for todo in todos_list:
+        if todo['id'] == todo_id:
+            return todo
+
+    return {}

@@ -24,3 +24,11 @@ def get_todo_by_id(todo_id: str, todos_list: List) -> Dict:
             return todo
 
     return {}
+
+def update_a_todo(todo_id:str, update_data: Dict, todos_list: List) -> Dict:
+    for todo in todos_list:
+        if todo['id'] == todo_id:
+            todo.update(update_data)
+            return todo
+
+    return {}
